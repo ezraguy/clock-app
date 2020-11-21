@@ -1,0 +1,35 @@
+.quote{
+   z-index: 1;
+   color: white;
+   min-height: 100px;
+
+   .content{
+       width: 100%;
+       display: flex;
+       align-items: center;
+    .refresh{
+        cursor: pointer;
+        display: inline;   
+        margin-left: 10px;
+       max-height: 20px;
+       
+    }
+    .quote-content{
+        font-size: 12pt;
+        display: inline;
+        
+    }
+   }
+   
+   .refresh-spin{
+       animation: spin 1s  linear infinite ;
+       
+   }
+   @keyframes spin{
+       0%{transform: rotate(0deg);}
+       50%{transform: rotate(180deg);}
+       100%{transform: rotate(360deg);}
+      
+   }
+
+}
