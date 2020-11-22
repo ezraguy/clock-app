@@ -1,0 +1,33 @@
+.clock{
+    color: white;
+
+    .greetings-wrap{
+        .greetings{
+            color: white;
+            font-weight: 300;
+            text-transform: uppercase;
+            font-size: 16pt;
+            .time-icon{
+                margin-right: 10px;
+            }
+        }
+    }
+    .time-wrap{
+        .time{
+            font-size:100pt;
+            margin: 0;
+            font-weight: bold;
+            span{
+                font-size: 16pt ;
+                font-weight: normal;
+            }
+           
+        }
+        .location{
+            font-weight: bold;
+            font-size: 20pt;
+            letter-spacing:5px;
+        }
+        
+    }
+}

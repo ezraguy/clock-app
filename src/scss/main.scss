@@ -1,4 +1,10 @@
 .main{
     font-family: 'Roboto', sans-serif;
-    padding: 5rem;
+    min-height: 100vh;
+    padding: 5rem 15rem;
+    padding-bottom: 0;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: space-between;
 }

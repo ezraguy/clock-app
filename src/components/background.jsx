@@ -6,19 +6,29 @@ import tabletDayTime from '../images/tablet/bg-image-daytime.jpg';
 import tabletNightTime from '../images/tablet/bg-image-nighttime.jpg';
 import mobileDayTime from '../images/mobile/bg-image-daytime.jpg';
 import mobileNightTime from '../images/mobile/bg-image-nighttime.jpg';
+import { getTime } from '../services/world-time-service.js';
+
 const Background = () => {
-    const [backgroundImg, setBackgroundImg] = useState('');
-    const [dayTime, setDayTime] = useState(false);
+    const [dayTime, setDayTime] = useState(true);
     const [screenSize, setScreenSize] = useState(0);
 
     const handleResize = () => {
+        chooseBackground();
         let screenWidth = window.innerWidth;
         setScreenSize(screenWidth)
+    }
+    const chooseBackground = async () => {
+        const timeData = await getTime();
+        const unixTime = timeData.unixtime;
+        const currentTime = new Date(unixTime * 1000);
+        let hours = currentTime.getHours();
+        if (hours > 18) setDayTime(false)
+        else setDayTime(true);
     }
     const setBackground = () => {
         if (screenSize > 1000 && dayTime) return <img src={desktopDayTime} className="backgroundImg" alt="" />;
         if (screenSize > 1000 && !dayTime) return <img src={desktopNightTime} className="backgroundImg" alt="" />;
-        if (screenSize < 1000 && screenSize > 600 && dayTime) return <img src={tabletDayTime} className="backgroundImg" alt="" />;
+        if (screenSize <= 1000 && screenSize > 600 && dayTime) return <img src={tabletDayTime} className="backgroundImg" alt="" />;
         if (screenSize < 1000 && screenSize > 600 && !dayTime) return <img src={tabletNightTime} className="backgroundImg" alt="" />;
         if (screenSize <= 600 && dayTime) return <img src={mobileDayTime} className="backgroundImg" alt="" />;
         if (screenSize <= 600 && !dayTime) return <img src={mobileNightTime} className="backgroundImg" alt="" />;
