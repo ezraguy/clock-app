@@ -8,19 +8,19 @@ import mobileDayTime from '../images/mobile/bg-image-daytime.jpg';
 import mobileNightTime from '../images/mobile/bg-image-nighttime.jpg';
 import { timeContext } from '../contexts/time-context'
 const Background = () => {
+    const [time, setTime] = useContext(timeContext);
     const [dayTime, setDayTime] = useState(true);
     const [screenSize, setScreenSize] = useState(0);
-    const [time, setTime] = useContext(timeContext);
 
     const handleResize = () => {
-        chooseBackground();
         let screenWidth = window.innerWidth;
         setScreenSize(screenWidth)
     }
 
     const chooseBackground = async () => {
         const hours = time.substring(0, 2);
-        if (hours > 18) setDayTime(false)
+        if (hours > 18)
+            setDayTime(false)
         else setDayTime(true);
     }
 
@@ -36,11 +36,11 @@ const Background = () => {
     useEffect(() => {
         window.addEventListener('resize', handleResize);
         handleResize();
-
+        chooseBackground();
         return () => {
             window.removeEventListener('resize', handleResize);
         }
-    }, [])
+    }, [time])
     return (
 
         <div className="background">
