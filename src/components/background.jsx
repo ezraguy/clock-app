@@ -18,7 +18,8 @@ const Background = () => {
     }
 
     const chooseBackground = async () => {
-        if (time > 18) setDayTime(false)
+        const hours = time.substring(0, 2);
+        if (hours > 18) setDayTime(false)
         else setDayTime(true);
     }
 
