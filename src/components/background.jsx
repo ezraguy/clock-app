@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../scss/background.scss';
 import desktopDayTime from '../images/desktop/bg-image-daytime.jpg';
 import desktopNightTime from '../images/desktop/bg-image-nighttime.jpg';
@@ -6,25 +6,22 @@ import tabletDayTime from '../images/tablet/bg-image-daytime.jpg';
 import tabletNightTime from '../images/tablet/bg-image-nighttime.jpg';
 import mobileDayTime from '../images/mobile/bg-image-daytime.jpg';
 import mobileNightTime from '../images/mobile/bg-image-nighttime.jpg';
-import { getTime } from '../services/world-time-service.js';
-
+import { timeContext } from '../contexts/time-context'
 const Background = () => {
     const [dayTime, setDayTime] = useState(true);
     const [screenSize, setScreenSize] = useState(0);
-
+    const [time, setTime] = useContext(timeContext)
     const handleResize = () => {
         chooseBackground();
         let screenWidth = window.innerWidth;
         setScreenSize(screenWidth)
     }
+
     const chooseBackground = async () => {
-        const timeData = await getTime();
-        const unixTime = timeData.unixtime;
-        const currentTime = new Date(unixTime * 1000);
-        let hours = currentTime.getHours();
-        if (hours > 18) setDayTime(false)
+        if (time > 18) setDayTime(false)
         else setDayTime(true);
     }
+
     const setBackground = () => {
         if (screenSize > 1000 && dayTime) return <img src={desktopDayTime} className="backgroundImg" alt="" />;
         if (screenSize > 1000 && !dayTime) return <img src={desktopNightTime} className="backgroundImg" alt="" />;

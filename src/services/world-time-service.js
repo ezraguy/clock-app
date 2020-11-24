@@ -1,16 +1,11 @@
 
 import axios from 'axios';
-import { getLocation } from './location-service';
-const getTime = async () => {
-    const config = {
-        headers: { 'Access-Control-Allow-Origin': '*' }
-    };
-    const location = await getLocation();
-    const ip = location.ip;
+const getTime = async (ip) => {
 
     const url = `http://worldtimeapi.org/api/ip/${ip}`
+    const headers = { 'Access-Control-Allow-Origin': '*' };
     try {
-        const data = await axios.get(url, config.headers);
+        const data = await axios(url, {}, { headers });
         return data.data;
 
     } catch (err) {

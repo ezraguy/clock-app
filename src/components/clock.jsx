@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../scss/clock.scss';
 import { getTime } from '../services/world-time-service.js';
 import { getLocation } from '../services/location-service.js';
 import sun from '../icons/icon-sun.svg';
 import moon from '../icons/icon-moon.svg';
 import Loader from '../utils/loader.jsx';
+import arrow from '../icons/icon-arrow-up.svg';
+import { timeContext } from '../contexts/time-context'
+
 const Clock = () => {
-    const [time, setTime] = useState('')
+    const [time, setTime] = useContext(timeContext);
     const [dayState, setDayState] = useState('');
     const [abbreviation, setAbbreviation] = useState('');
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [loading, setLoading] = useState(true);
+    const [arrowUp, setArrowUp] = useState(false);
 
-    const getTimeData = async () => {
-        const timeData = await getTime();
+    const getTimeData = async (ip) => {
+        const timeData = await getTime(ip);
         const unixTime = timeData.unixtime;
         const currentTime = new Date(unixTime * 1000);
         let hours = currentTime.getHours();
@@ -26,12 +30,14 @@ const Clock = () => {
         setTime(fulltime)
         setAbbreviation(timeData.abbreviation)
         setLoading(false)
+
     }
     const getLocationData = async () => {
         const locationData = await getLocation();
-        console.log(locationData);
         setCountry(locationData.country_code);
         setCity(locationData.city);
+        getTimeData(locationData.ip);
+
     }
     const calcTimeOfDay = (hours) => {
         let timeOfDay = '';
@@ -41,9 +47,13 @@ const Clock = () => {
         if (hours >= 18 && hours <= 24) timeOfDay = 'night'
         setDayState(timeOfDay);
     }
+
+    const handleInfoClick = () => {
+        setArrowUp(!arrowUp);
+    }
     useEffect(() => {
-        getTimeData();
         getLocationData();
+
     }, [])
     return (
         <div className="clock">
@@ -62,7 +72,16 @@ const Clock = () => {
 
                         <p className="time">{time} <span className="abbreviation">{abbreviation}</span></p>
 
-                        <p className="location">In {city},{country}</p>
+                        <div className="location-wrap">
+                            <p className="location">
+                                In {city},{country}
+                            </p>
+                            <div className="see-more-wrap">
+
+                                <button
+                                    onClick={handleInfoClick} className="see-more-btn">more<img src={arrow} alt="arrow" className={arrowUp ? 'arrow arrow-down' : 'arrow arrow-up'} /></button>
+                            </div>
+                        </div>
 
                     </div>
                 </React.Fragment>
