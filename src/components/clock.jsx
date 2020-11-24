@@ -30,7 +30,6 @@ const Clock = () => {
         setTime(fulltime)
         setAbbreviation(timeData.abbreviation)
         setLoading(false)
-
     }
     const getLocationData = async () => {
         const locationData = await getLocation();

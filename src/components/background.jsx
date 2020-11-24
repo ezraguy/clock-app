@@ -10,7 +10,8 @@ import { timeContext } from '../contexts/time-context'
 const Background = () => {
     const [dayTime, setDayTime] = useState(true);
     const [screenSize, setScreenSize] = useState(0);
-    const [time, setTime] = useContext(timeContext)
+    const [time, setTime] = useContext(timeContext);
+
     const handleResize = () => {
         chooseBackground();
         let screenWidth = window.innerWidth;
@@ -31,6 +32,7 @@ const Background = () => {
         if (screenSize <= 600 && dayTime) return <img src={mobileDayTime} className="backgroundImg" alt="" />;
         if (screenSize <= 600 && !dayTime) return <img src={mobileNightTime} className="backgroundImg" alt="" />;
     }
+
     useEffect(() => {
         window.addEventListener('resize', handleResize);
         handleResize();
