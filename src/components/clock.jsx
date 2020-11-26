@@ -6,16 +6,21 @@ import sun from '../icons/icon-sun.svg';
 import moon from '../icons/icon-moon.svg';
 import Loader from '../utils/loader.jsx';
 import arrow from '../icons/icon-arrow-up.svg';
-import { timeContext } from '../contexts/time-context'
+import { TimeContext } from '../context/time-context'
+import { LocationContext } from '../context/location-context';
+import { MoreInfoContext } from '../context/more-info-context';
+
 
 const Clock = () => {
-    const [time, setTime] = useContext(timeContext);
+    const [time, setTime] = useContext(TimeContext);
     const [dayState, setDayState] = useState('');
     const [abbreviation, setAbbreviation] = useState('');
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [loading, setLoading] = useState(true);
     const [arrowUp, setArrowUp] = useState(false);
+    const [location, setLocation] = useContext(LocationContext);
+    const [moreInfo, setMoreInfo] = useContext(MoreInfoContext);
 
     const getTimeData = async (ip) => {
         const timeData = await getTime(ip);
@@ -36,7 +41,7 @@ const Clock = () => {
         setCountry(locationData.country_code);
         setCity(locationData.city);
         getTimeData(locationData.ip);
-
+        setLocation(locationData);
     }
     const calcTimeOfDay = (hours) => {
         let timeOfDay = '';
@@ -49,12 +54,17 @@ const Clock = () => {
 
     const handleInfoClick = () => {
         setArrowUp(!arrowUp);
+        setMoreInfo(!moreInfo)
+
     }
     useEffect(() => {
         getLocationData();
 
     }, [])
     return (
+
+
+
         <div className="clock">
             {loading ? <Loader /> :
                 <React.Fragment>
@@ -78,17 +88,30 @@ const Clock = () => {
                             <div className="see-more-wrap">
 
                                 <button
-                                    onClick={handleInfoClick} className="see-more-btn">more<img src={arrow} alt="arrow" className={arrowUp ? 'arrow arrow-down' : 'arrow arrow-up'} /></button>
+                                    onClick={handleInfoClick} className="see-more-btn">{arrowUp ? 'less' : 'more'}<img src={arrow} alt="arrow" className={arrowUp ? 'arrow arrow-down' : 'arrow arrow-up'} /></button>
                             </div>
                         </div>
 
                     </div>
                 </React.Fragment>
-
             }
 
-
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     );
 }
 

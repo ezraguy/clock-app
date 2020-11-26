@@ -1,6 +1,9 @@
 .clock{
+    padding: 5rem 10rem;
     color: white;
+      transition: .7s ease-in-out;
 
+    position: relative;
     .greetings-wrap{
         .greetings{
             color: white;
@@ -12,6 +15,7 @@
             }
         }
     }
+
     .time-wrap{
         display: flex;
         flex-direction: column;
@@ -69,9 +73,12 @@
            
         }
     }
+    
 }
+
 @media screen and (max-width:756px){
     .clock{
+        padding: 5rem 5rem;
         .time-wrap{
             .location-wrap{
                 flex-direction: column;
@@ -87,6 +94,7 @@
 @media screen and (max-width:567px){
 
     .clock{
+        padding: 5rem 1rem;
         .time-wrap{
            flex-wrap: wrap;;
             .time{
@@ -99,5 +107,19 @@
                 margin-bottom: 50px;
             }
         }
+    }
+}
+
+
+@media screen and (max-width:756px){
+    .main{
+        
+    }
+}
+
+
+@media screen and (max-width:567px){
+    .main{
+      
     }
 }

@@ -2,6 +2,7 @@
    z-index: 1;
    color: white;
    min-height: 100px;
+   padding: 5rem 10rem;
 
    .content{
        width: 100%;
@@ -33,4 +34,17 @@
       
    }
 
+}
+
+@media screen and(max-width:756px){
+    .quote{
+
+        padding: 5rem 5rem;
+    }
+}
+@media screen and(max-width:567px){
+    .quote{
+
+        padding: 5rem 1rem;
+    }
 }

@@ -1,0 +1,21 @@
+.more-info{
+    
+   position: absolute;
+   width: 100%;     
+   height: 40em;
+   transition: .7s ease-in-out;
+   background-color: red;
+   left: 0;
+   bottom:-40em;
+   transition: .7s ease;
+   
+    .content{
+        width: 100%;
+        position: absolute;
+    }
+}
+
+
+
+
+

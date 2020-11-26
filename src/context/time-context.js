@@ -1,12 +1,12 @@
 import React, { createContext, useState } from 'react';
 
-export const timeContext = createContext();
+export const TimeContext = createContext();
 
 export const TimeProvider = props => {
     const [time, setTime] = useState('')
     return (
-        <timeContext.Provider value={[time, setTime]}>
+        <TimeContext.Provider value={[time, setTime]}>
             {props.children}
-        </timeContext.Provider>
+        </TimeContext.Provider>
     );
 }

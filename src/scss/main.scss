@@ -1,23 +1,14 @@
 .main{
     font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
-    padding: 5rem 10rem;
-    padding-bottom: 0;
+    min-height: 100%;   
+    width: 100%;
     display: flex;
-    box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
+    transition: .7s ease;
+   
 }
 
-@media screen and (max-width:756px){
-    .main{
-        padding: 5rem 5rem;
-    }
-}
-
-
-@media screen and (max-width:567px){
-    .main{
-        padding: 5rem 1rem;
-    }
+.slide-up{
+    transform: translate3d(0, -20em, 0);
 }
