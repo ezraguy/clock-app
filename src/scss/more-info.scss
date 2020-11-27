@@ -1,18 +1,31 @@
 .more-info{
-    
    position: absolute;
    width: 100%;     
-   height: 40em;
+   height: 25em;
    transition: .7s ease-in-out;
-   background-color: red;
+  padding-left: 8em;
+  
    left: 0;
-   bottom:-40em;
-   transition: .7s ease;
-   
-    .content{
-        width: 100%;
-        position: absolute;
-    }
+   bottom:-29em;
+   width: 100%;
+   .content-wrap{
+    height: 100%;
+       .content{
+           height: 100%;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+           .timezone,.day-of-year{
+               .label{
+                   color: rgb(165, 160, 160);
+                   text-transform: uppercase;
+               }
+               .text{
+                   font-size: 20pt;
+               }
+           }
+       }
+   }
 }
 
 

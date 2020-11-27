@@ -13,6 +13,7 @@ import { MoreInfoContext } from '../context/more-info-context';
 
 const Clock = () => {
     const [time, setTime] = useContext(TimeContext);
+    const [fullTime, setFullTime] = useState('');
     const [dayState, setDayState] = useState('');
     const [abbreviation, setAbbreviation] = useState('');
     const [country, setCountry] = useState('');
@@ -24,6 +25,7 @@ const Clock = () => {
 
     const getTimeData = async (ip) => {
         const timeData = await getTime(ip);
+
         const unixTime = timeData.unixtime;
         const currentTime = new Date(unixTime * 1000);
         let hours = currentTime.getHours();
@@ -32,7 +34,8 @@ const Clock = () => {
         if (minutes < 10) minutes = `0${minutes}`
         let fulltime = `${hours}:${minutes}`;
         calcTimeOfDay(hours);
-        setTime(fulltime)
+        setTime(timeData);
+        setFullTime(fulltime);
         setAbbreviation(timeData.abbreviation)
         setLoading(false)
     }
@@ -79,7 +82,7 @@ const Clock = () => {
                     <div className="time-wrap">
 
 
-                        <p className="time">{time} <span className="abbreviation">{abbreviation}</span></p>
+                        <p className="time">{fullTime} <span className="abbreviation">{abbreviation}</span></p>
 
                         <div className="location-wrap">
                             <p className="location">
