@@ -6,7 +6,26 @@
     flex-direction: column;
     justify-content: space-between;
     transition: .7s ease;
-   
+    position: relative;
+    .attribution { 
+        font-size: 12pt;
+        text-align: center;
+        color: whitesmoke;
+        position: fixed;
+        bottom: 10px;
+       
+        margin-right: auto;
+        margin-left: auto;
+        right: 0;
+        left: 0;
+
+        a{
+          &:visited{
+              color: white;
+          }  
+        }
+        
+    }
 }
 
 .slide-up{
