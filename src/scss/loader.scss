@@ -3,6 +3,7 @@ lds-roller {
     position: relative;
     width: 80px !important;
     height: 100px !important;
+   
   }
   
   .lds-roller div {
@@ -10,7 +11,7 @@ lds-roller {
     transform-origin: 40px 40px;
     max-height: 40px !important;
     max-width: 40px !important;
-
+   
     &:after {
       content: " ";
       display: block;

@@ -1,16 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../scss/more-info.scss';
-import { MoreInfoContext } from '../context/more-info-context';
 import { LocationContext } from '../context/location-context';
 import { TimeContext } from '../context/time-context';
+import { FullTimeContext } from '../context/full-time-context';
 
 const MoreInfo = () => {
-    const [location, setLocaiton] = useContext(LocationContext);
-    const [time, setTime] = useContext(TimeContext);
+    const [location] = useContext(LocationContext);
+    const [time] = useContext(TimeContext);
+    const [fullTime] = useContext(FullTimeContext);
+    const [dayStyle, setDayStyle] = useState(true);
+    useEffect(() => {
+        const hours = fullTime.substring(0, 2);
+        if (hours >= 18)
+            setDayStyle(false)
+        else
+            setDayStyle(true);
 
+
+
+    }, [fullTime])
     return (
 
-        <div className='more-info'>
+        <div className={!dayStyle ? 'more-info night' : 'more-info'}>
             <div className="content-wrap">
                 <div className="content">
                     <div className="left-panel">
