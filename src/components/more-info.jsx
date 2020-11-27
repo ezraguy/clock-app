@@ -5,13 +5,12 @@ import { LocationContext } from '../context/location-context';
 import { TimeContext } from '../context/time-context';
 
 const MoreInfo = () => {
-    const [moreInfo, setMoreInfo] = useContext(MoreInfoContext);
     const [location, setLocaiton] = useContext(LocationContext);
     const [time, setTime] = useContext(TimeContext);
 
     return (
 
-        <div className={!moreInfo ? 'more-info ' : 'more-info show-info'}>
+        <div className='more-info'>
             <div className="content-wrap">
                 <div className="content">
                     <div className="left-panel">

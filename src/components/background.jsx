@@ -6,10 +6,10 @@ import tabletDayTime from '../images/tablet/bg-image-daytime.jpg';
 import tabletNightTime from '../images/tablet/bg-image-nighttime.jpg';
 import mobileDayTime from '../images/mobile/bg-image-daytime.jpg';
 import mobileNightTime from '../images/mobile/bg-image-nighttime.jpg';
-import { TimeContext } from '../context/time-context';
+import { FullTimeContext } from '../context/full-time-context';
 
 const Background = () => {
-    const [fullTime, setFullTime] = useContext(TimeContext);
+    const [fullTime, setFullTime] = useContext(FullTimeContext);
     const [dayTime, setDayTime] = useState(true);
     const [screenSize, setScreenSize] = useState(0);
 
@@ -19,12 +19,10 @@ const Background = () => {
     }
 
     const chooseBackground = async () => {
-        // const hours = fullTime.substring(0, 2);
-
-
-        // if (hours => 18)
-        //     setDayTime(false)
-        // else setDayTime(true);
+        const hours = fullTime.substring(0, 2);
+        if (hours => 18)
+            setDayTime(false)
+        else setDayTime(true);
     }
 
     const setBackground = () => {

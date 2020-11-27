@@ -4,19 +4,21 @@
    height: 25em;
    transition: .7s ease-in-out;
    left: 0;
-   bottom:-29em;
+   bottom:-25em;
    width: 100%;
+
    .content-wrap{
     padding: 9em;
     padding-top: 0;
     height: 100%;
+
        .content{
         display: flex;
         flex-direction: row;
         height: 100%;
         width: 100%;
         display: flex;
-       justify-content: space-between;
+        justify-content: space-between;
        
         .left-panel,.right-panel{
             display: flex;
@@ -27,7 +29,9 @@
                .label{
                    color: rgb(165, 160, 160);
                    text-transform: uppercase;
+                   
                }
+
                .text{
                    font-size: 20pt;
                }
@@ -35,22 +39,23 @@
        }
        .divider{
         border-left: 1px solid #bbb;
-        width: 100px;
+        
+        
+
         height: 80%;        
 
        }
    }
 }
 
+
 @media screen and(max-width:756px){
     .more-info{
-        
-       
        .content-wrap{
            padding: 1em ;
            .content{
             .timezone,.day-of-year,.day-of-week,.week-number{
-                padding-right: 30px;
+             
                 .text{
                     font-size: 15pt;
                 }
@@ -68,10 +73,10 @@
 }
 @media screen and(max-width:567px){
     .more-info{
-
         padding:  0em;
     }
 }
+
 
 
 
