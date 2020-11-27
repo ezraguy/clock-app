@@ -12,3 +12,11 @@
 .slide-up{
     transform: translate3d(0, -30em, 0);
 }
+
+
+@media screen and(max-width:756px){
+    .slide-up{
+        transform: translate3d(0, -20em, 0);
+
+    }
+}

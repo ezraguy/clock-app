@@ -3,19 +3,27 @@
    width: 100%;     
    height: 25em;
    transition: .7s ease-in-out;
-  padding-left: 8em;
-  
    left: 0;
    bottom:-29em;
    width: 100%;
    .content-wrap{
+    padding: 9em;
+    padding-top: 0;
     height: 100%;
        .content{
-           height: 100%;
-           display: flex;
-           flex-direction: column;
-           justify-content: space-between;
-           .timezone,.day-of-year{
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+        display: flex;
+       justify-content: space-between;
+       
+        .left-panel,.right-panel{
+            display: flex;
+            flex-direction: column;
+        }
+          
+           .timezone,.day-of-year,.day-of-week,.week-number{
                .label{
                    color: rgb(165, 160, 160);
                    text-transform: uppercase;
@@ -25,10 +33,45 @@
                }
            }
        }
+       .divider{
+        border-left: 1px solid #bbb;
+        width: 100px;
+        height: 80%;        
+
+       }
    }
 }
 
+@media screen and(max-width:756px){
+    .more-info{
+        
+       
+       .content-wrap{
+           padding: 1em ;
+           .content{
+            .timezone,.day-of-year,.day-of-week,.week-number{
+                padding-right: 30px;
+                .text{
+                    font-size: 15pt;
+                }
+                .label{
+                    font-size: 10pt;
+                    width: 100%;
+                }
+            }
+           .divider{
+               height: 50%;
+           }
+           }
+       }
+    }
+}
+@media screen and(max-width:567px){
+    .more-info{
 
+        padding:  0em;
+    }
+}
 
 
 
