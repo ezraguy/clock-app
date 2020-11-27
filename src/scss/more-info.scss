@@ -5,11 +5,11 @@
    transition: .7s ease-in-out;
    left: 0;
    bottom:-25em;
-   width: 100%;
+ 
 
    .content-wrap{
     padding: 9em;
-    padding-top: 0;
+    padding-top: 70px;
     height: 100%;
 
        .content{
@@ -39,9 +39,6 @@
        }
        .divider{
         border-left: 1px solid #bbb;
-        
-        
-
         height: 80%;        
 
        }

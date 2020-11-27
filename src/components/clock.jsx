@@ -9,11 +9,12 @@ import arrow from '../icons/icon-arrow-up.svg';
 import { TimeContext } from '../context/time-context'
 import { LocationContext } from '../context/location-context';
 import { MoreInfoContext } from '../context/more-info-context';
+import { FullTimeContext } from '../context/full-time-context';
 
 
 const Clock = () => {
     const [time, setTime] = useContext(TimeContext);
-    const [fullTime, setFullTime] = useState('');
+    const [fullTime, setFullTime] = useContext(FullTimeContext);
     const [dayState, setDayState] = useState('');
     const [abbreviation, setAbbreviation] = useState('');
     const [country, setCountry] = useState('');
@@ -25,7 +26,6 @@ const Clock = () => {
 
     const getTimeData = async (ip) => {
         const timeData = await getTime(ip);
-
         const unixTime = timeData.unixtime;
         const currentTime = new Date(unixTime * 1000);
         let hours = currentTime.getHours();
@@ -33,9 +33,9 @@ const Clock = () => {
         if (hours < 10) hours = `0${hours}`
         if (minutes < 10) minutes = `0${minutes}`
         let fulltime = `${hours}:${minutes}`;
+        setFullTime(fulltime);
         calcTimeOfDay(hours);
         setTime(timeData);
-        setFullTime(fulltime);
         setAbbreviation(timeData.abbreviation)
         setLoading(false)
     }

@@ -15,7 +15,6 @@ const MoreInfo = () => {
                 <div className="content">
                     <div className="left-panel">
                         <div className="timezone">
-
                             <p className="label">Current timezone</p>
                             <p className="text">{location.time_zone}</p>
                         </div>
