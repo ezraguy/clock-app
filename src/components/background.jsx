@@ -20,10 +20,11 @@ const Background = () => {
 
     const chooseBackground = async () => {
         const hours = fullTime.substring(0, 2);
-        if (hours >= 18)
+        if ((hours >= 0 && hours <= 4) || (hours >= 18 && hours <= 24))
             setDayTime(false)
         else
-            setDayTime(true);
+            if ((hours >= 5 && hours <= 11) || (hours >= 12 && hours <= 17))
+                setDayTime(true);
     }
 
     const setBackground = () => {
