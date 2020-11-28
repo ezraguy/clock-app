@@ -55,8 +55,8 @@
        .content-wrap{
            padding: 1em ;
            .content{
+               display: flex;
             .timezone,.day-of-year,.day-of-week,.week-number{
-             
                 .text{
                     font-size: 15pt;
                 }
@@ -75,6 +75,34 @@
 @media screen and(max-width:567px){
     .more-info{
         padding:  0em;
+
+        .content-wrap{
+            
+            .content{
+              display: flex ;
+              justify-content: flex-start;
+              position: relative;
+              height: 14em;
+                flex-direction: column-reverse ;
+                .timezone,.day-of-year,.day-of-week,.week-number{
+                    display: flex;
+                    margin-bottom: 30px;
+             
+                   .text,.label{
+                       margin: 0;
+                   }
+                }.left-panel{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+               
+            }
+            
+        }
+        .divider{
+            display: none;
+        }
     }
 }
 
