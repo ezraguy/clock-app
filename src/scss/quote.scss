@@ -3,22 +3,25 @@
    color: white;
    min-height: 100px;
    padding: 5rem 10rem;
-
+   width: 400px;
    .content{
-       width: 100%;
+      
        display: flex;
-       align-items: center;
+     
     .refresh{
         cursor: pointer;
         display: inline;   
         margin-left: 20px;
-       max-height: 20px;
+        max-height: 20px;
+        align-self: top;
        
     }
     .quote-content{
         font-size: 12pt;
-        display: inline;
         font-weight: 300;
+        width: 300px;
+        margin: 0;
+        align-self: top;
         
     }
    }
