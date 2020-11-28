@@ -1,7 +1,8 @@
 .more-info{
    position: absolute;
    width: 100%;     
-   height: 26em;
+  
+   height: 26em; 
    transition: .7s ease-in-out;
    left: 0;
    bottom:-26em;
@@ -11,12 +12,17 @@
     padding: 9em;
     padding-top: 70px;
     height: 100%;
+    
+  
 
        .content{
         display: flex;
         flex-direction: row;
         height: 100%;
         width: 100%;
+        max-width: 1440px;
+        margin-left: auto;
+        margin-right: auto;
         display: flex;
         justify-content: space-between;
        
